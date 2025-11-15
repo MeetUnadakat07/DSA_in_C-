@@ -28,10 +28,24 @@ int maxSubarraySum2(int arr[], int n) {
     return maxSum;
 }
 
+// Kadane's Algorithm 
+int maxSubarraySum3(int arr[], int n) {
+    int maxSum = INT_MIN;
+    int currrSum = 0;
+    for(int i = 0; i < n; i++) {
+        currrSum += arr[i];
+        maxSum = max(currrSum, maxSum);
+        if(currrSum < 0) {          
+            currrSum = 0;
+        }
+    }
+    return maxSum;
+}
+
 int main() {
     int arr[] = {2, -3, 6, -5, 4, 2};
     int n = sizeof(arr) / sizeof(int);
-    int max = maxSubarraySum2(arr, n);
+    int max = maxSubarraySum3(arr, n);
     cout << "The maximum subarray sum is: " << max << endl;
     return 0;
 }
