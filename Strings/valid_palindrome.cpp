@@ -1,8 +1,9 @@
 #include<iostream>
 #include<cstring>
+#include<string>                                    // C++ STL header file
 using namespace std;
 
-bool isPalindrome(char str[], int n) {
+bool isPalindrome(string str, int n) {
     int st = 0, end = n - 1;
     while(st < end) {
         if(str[st++] != str[end--]) {
@@ -15,6 +16,10 @@ bool isPalindrome(char str[], int n) {
 }
 
 int main() {
-    char str[] = "racecar";
-    isPalindrome(str, strlen(str));
+    // char str[] = "racecar";
+    // isPalindrome(str, strlen(str));
+    string str;
+    cout << "Enter a string you want to check for: ";
+    getline(cin, str);
+    isPalindrome(str, str.length());
 }
