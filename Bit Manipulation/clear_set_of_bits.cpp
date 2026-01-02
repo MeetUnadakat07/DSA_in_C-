@@ -2,17 +2,16 @@
 using namespace std;
 
 int clearSetOfBits(int num, int i, int j) {
-    int bitMask = ~0 << i + 1;
-    num = num & bitMask;
-    bitMask = (1 << j) - 1;
-    num = num | bitMask;
-    return num;
+    int leftMask = ~0 << (j + 1);
+    int rightMask = (1 << i) - 1;
+    int mask = leftMask | rightMask;
+    return num & mask;
 }
 
 int main() {
     int num = 31;
-    int i = 3; 
-    int j = 1;
+    int i = 1; 
+    int j = 3;
     int ans = clearSetOfBits(num, i, j);
     cout << ans;
 }
