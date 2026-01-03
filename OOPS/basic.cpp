@@ -56,6 +56,14 @@ public:
         this -> name = name;
         this -> color = color;
     }
+
+    // Copy constructor -> Can also be created by default by the compiler 
+    Car(Car &original) {
+        cout << "Copying.." << endl;
+        name = original.name;
+        color = original.color;
+    }
+
     void start() {
         cout << "Car is starting..." << endl;
     }
@@ -76,4 +84,7 @@ int main() {
     Car c1("Mercedes Benz", "white");
     c1.getName();
     c1.getColor();
+    Car c2(c1);
+    c2.getName();
+    c2.getColor();
 }
