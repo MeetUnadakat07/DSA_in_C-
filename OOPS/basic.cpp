@@ -78,6 +78,37 @@ public:
     }
 };
 
+// ---------------------- Static keyword  --------------------------------
+class Example {
+public:
+static int x;                       // Static variable of class
+    void counter() {
+        static int count = 0;       // Static variable of function
+        cout << count++ << endl;
+    }
+};
+
+int Example::x = 0;                 // Initialization of class static variable (scope resolution operator)
+
+// ------------------- Friend class and funtion --------------------------
+
+class A {
+    string secret = "secret data";
+    friend class B;             // declare B as friend of A
+    friend void revealSecret(A &obj);       // revealSecret function is now a friend of A
+};
+
+class B {
+public:
+    void showSecret(A &obj) {
+        cout << obj.secret << endl;
+    }
+};
+
+void revealSecret(A &obj) {
+    cout << obj.secret << endl;
+}
+
 int main() {
     Student s1;         // Object
     Car c0;
@@ -87,4 +118,19 @@ int main() {
     Car c2(c1);
     c2.getName();
     c2.getColor();
+
+    Example e1;
+    Example e2;
+    Example e3;
+    e1.counter();
+    e2.counter();
+    e3.counter();
+    cout << e1.x++ << endl;
+    cout << e2.x++ << endl;
+    cout << e3.x++ << endl;
+
+    A a1;
+    B b1;
+    b1.showSecret(a1);
+    revealSecret(a1);
 }
